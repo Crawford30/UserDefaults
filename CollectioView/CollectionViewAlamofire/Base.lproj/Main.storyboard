@@ -220,9 +220,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9wi-MG-HBG">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9wi-MG-HBG">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" name="myGreenTint"/>
                                 <color key="barTintColor" name="myGreenTint"/>
                                 <textAttributes key="titleTextAttributes">
@@ -239,50 +238,50 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="96u-zF-Owq">
-                                <rect key="frame" x="16" y="57" width="343" height="589"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="96u-zF-Owq">
+                                <rect key="frame" x="16" y="57" width="343" height="594"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Select the service of interest" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kcu-tS-Y26">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="36.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="41.5"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" name="myGreenTint"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DZr-9y-sbf">
-                                        <rect key="frame" x="0.0" y="46.5" width="343" height="34"/>
+                                        <rect key="frame" x="0.0" y="51.5" width="343" height="34"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GVC-ZQ-3vX">
-                                        <rect key="frame" x="0.0" y="90.5" width="343" height="34"/>
+                                        <rect key="frame" x="0.0" y="95.5" width="343" height="34"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="When is the service needed?" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G4x-UN-XsV">
-                                        <rect key="frame" x="0.0" y="134.5" width="343" height="36.5"/>
+                                        <rect key="frame" x="0.0" y="139.5" width="343" height="36.5"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" name="myGreenTint"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XkC-tu-ugt">
-                                        <rect key="frame" x="0.0" y="181" width="343" height="34"/>
+                                        <rect key="frame" x="0.0" y="186" width="343" height="34"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Enter service Location" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lFM-TL-CHu">
-                                        <rect key="frame" x="0.0" y="225" width="343" height="37.5"/>
+                                        <rect key="frame" x="0.0" y="230" width="343" height="37.5"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" name="myGreenTint"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DRP-WP-2QI">
-                                        <rect key="frame" x="0.0" y="272.5" width="343" height="34"/>
+                                        <rect key="frame" x="0.0" y="277.5" width="343" height="34"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -291,34 +290,34 @@
                                         </connections>
                                     </textField>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Select payment method" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="766-NW-Qhq">
-                                        <rect key="frame" x="0.0" y="316.5" width="343" height="37.5"/>
+                                        <rect key="frame" x="0.0" y="321.5" width="343" height="37.5"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" name="myGreenTint"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6S7-4r-7h7">
-                                        <rect key="frame" x="0.0" y="364" width="343" height="34"/>
+                                        <rect key="frame" x="0.0" y="369" width="343" height="34"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Enter your service description" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9V0-6X-ZpV">
-                                        <rect key="frame" x="0.0" y="408" width="343" height="33"/>
+                                        <rect key="frame" x="0.0" y="413" width="343" height="33"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" name="myGreenTint"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" text="service description(not less than 20 characters)" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="BeB-Pn-dgz">
-                                        <rect key="frame" x="0.0" y="451" width="343" height="98"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="service description(not less than 20 characters)" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="BeB-Pn-dgz">
+                                        <rect key="frame" x="0.0" y="456" width="343" height="98"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" name="myGreenTint"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ic5-X5-Kal">
-                                        <rect key="frame" x="0.0" y="559" width="343" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ic5-X5-Kal">
+                                        <rect key="frame" x="0.0" y="564" width="343" height="30"/>
                                         <color key="backgroundColor" name="myGreenTint"/>
                                         <color key="tintColor" name="myGreenTint"/>
                                         <state key="normal" title="Make service Request">
@@ -338,6 +337,10 @@
                         <constraints>
                             <constraint firstItem="RrC-zm-fa5" firstAttribute="trailing" secondItem="96u-zF-Owq" secondAttribute="trailing" constant="16" id="Ehn-QK-nfb"/>
                             <constraint firstItem="96u-zF-Owq" firstAttribute="leading" secondItem="RrC-zm-fa5" secondAttribute="leading" constant="16" id="Lym-yk-vdn"/>
+                            <constraint firstItem="96u-zF-Owq" firstAttribute="top" secondItem="qKW-QW-X4h" secondAttribute="top" constant="57" id="Qqd-Zv-6LV"/>
+                            <constraint firstItem="96u-zF-Owq" firstAttribute="centerX" secondItem="9wi-MG-HBG" secondAttribute="centerX" id="diy-Au-KrJ"/>
+                            <constraint firstItem="96u-zF-Owq" firstAttribute="top" secondItem="9wi-MG-HBG" secondAttribute="bottom" constant="13" id="hmM-fx-9l0"/>
+                            <constraint firstItem="9wi-MG-HBG" firstAttribute="leading" secondItem="RrC-zm-fa5" secondAttribute="leading" id="jyd-dO-8oA"/>
                             <constraint firstItem="RrC-zm-fa5" firstAttribute="bottom" secondItem="96u-zF-Owq" secondAttribute="bottom" constant="16" id="rO9-iS-dmV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RrC-zm-fa5"/>
