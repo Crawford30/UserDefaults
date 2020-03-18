@@ -17,6 +17,7 @@
 		EE2C5C2F23FBE0CE00FC0782 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE2C5C2E23FBE0CE00FC0782 /* Assets.xcassets */; };
 		EE2C5C3223FBE0CE00FC0782 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE2C5C3023FBE0CE00FC0782 /* LaunchScreen.storyboard */; };
 		EE2C5C3A23FBE1B300FC0782 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2C5C3923FBE1B300FC0782 /* CollectionViewCell.swift */; };
+		EE30A9EE242203E10044BDDE /* BookNowVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE30A9ED242203E10044BDDE /* BookNowVC.swift */; };
 		EE8BC83723FD18E00050FD64 /* horizontalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8BC83623FD18E00050FD64 /* horizontalCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		EE2C5C3123FBE0CE00FC0782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EE2C5C3323FBE0CE00FC0782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE2C5C3923FBE1B300FC0782 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		EE30A9ED242203E10044BDDE /* BookNowVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookNowVC.swift; sourceTree = "<group>"; };
 		EE8BC83623FD18E00050FD64 /* horizontalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = horizontalCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,6 +93,7 @@
 				EE2C5C2E23FBE0CE00FC0782 /* Assets.xcassets */,
 				EE2C5C3023FBE0CE00FC0782 /* LaunchScreen.storyboard */,
 				EE2C5C3323FBE0CE00FC0782 /* Info.plist */,
+				EE30A9ED242203E10044BDDE /* BookNowVC.swift */,
 			);
 			path = CollectionViewAlamofire;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 			files = (
 				EE2C5C2A23FBE0C800FC0782 /* ViewController.swift in Sources */,
 				4C4699D1241467D2000E4DC7 /* Categories.swift in Sources */,
+				EE30A9EE242203E10044BDDE /* BookNowVC.swift in Sources */,
 				4C4699CF24146413000E4DC7 /* Services.swift in Sources */,
 				EE2C5C2623FBE0C800FC0782 /* AppDelegate.swift in Sources */,
 				EE8BC83723FD18E00050FD64 /* horizontalCollectionViewCell.swift in Sources */,

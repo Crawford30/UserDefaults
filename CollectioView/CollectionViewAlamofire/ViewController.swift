@@ -10,6 +10,11 @@ import UIKit
 import Alamofire
 import AlamofireImage
 
+//======Protocol to send category title and service title to BookNowVC
+//protocol sendDataToDelegate {
+//    func sendDataToVC(myData: String)
+//}
+
 
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
@@ -22,12 +27,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
     }
     
-    
-    //================================== key for user defaults ==============
-//    struct Key {
-//        static let isFavoutite = "isFavoutite"
-//
-//    }
+    //MARK:- Delegate to send data
+    //======== setting Delegate variable from the protocol
+     //var delegate: sendDataToDelegate? = nil
     
     let keyForFavourites = "Favourites"
     
@@ -923,11 +925,33 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
     }
     
-    //🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷
+   
+    
+    
+    
+   //MARK:- BOOK NOW BUTTON //🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷
     
     @IBAction func bookNowTapped(_ sender: UIButton) {
         
-        print("Book Now \(String(sender.tag)) pressed!")
+       // print("Book Now \(String(sender.tag)) pressed!")
+        
+//        let whichButton: Int = sender.tag
+//
+//        if self.delegate != nil && self.allServicesArray[IndexPath.init(item: whichButton, section: 0)] != nil {
+//
+//        }
+        
+        
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+  let nextViewController = storyBoard.instantiateViewController(withIdentifier: "BooKNow") as! BookNowVC
+        nextViewController.modalPresentationStyle = .fullScreen
+        self.present(nextViewController, animated:true, completion:nil)
+        //nextViewController.categoryTitle = texField
+        
+        
+        
+        
+        
         
     }
     
