@@ -131,6 +131,16 @@ class BookNowVC: UIViewController {
             
               // serviceStackView.frame =  serviceStackviewRect
             
+           //enables auto layout for the servicestack view  serviceStackView.translatesAutoresizingMaskIntoConstraints = false
+            serviceStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive  = true //centers verticall
+            serviceStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive  = true //centers horizontally
+            
+            serviceStackView.widthAnchor.constraint(equalToConstant: 343).isActive  = true
+            serviceStackView.heightAnchor.constraint(equalToConstant: 589).isActive  = true
+            
+            
+            
+            
 
         }
 
