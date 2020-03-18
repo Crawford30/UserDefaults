@@ -9,18 +9,41 @@
 
 import UIKit
 
-//struct iphoneDevice: Int {
+//enum SizeType: CGFloat {
+////    case iPhone4 = 960.0
+////    case iPhone5 = 1136.0
+////    case iPhone6 = 1334.0
+////    case iPhone6Plus = 1920.0
 //
+//
+//    case iphoneX = 821.0
+//    case iphone11 = 896.0
+//    case iphone8  = 736.0
 //}
+
+
+//enum iPhoneDevice: CGFloat {
+//    
+//    case iPhone8          =  667.0
+//    case iPhone8Plus     = 736.0
+//    case iPhone11         = 896.0
+//    case iPhone11ProMax   = 896.0
+//    
+//}
+
+
 
 class BookNowVC: UIViewController {
     
 //    var categoryTitle: String!
 //    var serviceTitle: String!
     
-    let iPhone8PlusHeight: CGFloat = 736.0
+    //let iPhone8PlusHeight: CGFloat = 736.0
+    
+    let iphone8Height: CGFloat = 667.0
     
     
+    @IBOutlet weak var serviceStackView: UIStackView!
     
 
     override func viewDidLoad() {
@@ -91,19 +114,23 @@ class BookNowVC: UIViewController {
 
         var tempNavBarRect: CGRect = navBar.frame
 
-        if self.view.frame.size.height <= iPhone8PlusHeight {
+        if self.view.frame.size.height <= iphone8Height {
             tempNavBarRect.origin.y = 20
 
             navBar.frame = tempNavBarRect
-
-            let tabServiceButtonRect: CGRect = serviceMakeRequestBtnOutlet.frame
-
-            let newYOrigin = self.view.frame.size.height - tabServiceButtonRect.size.height
-
-            tempNavBarRect.origin.y = newYOrigin
-
-            serviceMakeRequestBtnOutlet.frame    = tempNavBarRect
-
+            
+            
+        
+            var serviceStackviewRect: CGRect = serviceStackView.frame
+            
+            let newYOrigin = self.view.frame.height - serviceStackviewRect.size.height
+            
+            //let newYOrigin = self.navBar.frame.origin.y + self.navBar.frame.size.height + 20
+            
+                serviceStackviewRect.origin.y = newYOrigin
+            
+              // serviceStackView.frame =  serviceStackviewRect
+            
 
         }
 
@@ -130,4 +157,20 @@ class BookNowVC: UIViewController {
 }
 
 
+//            let serviceStackviewRect: CGRect = serviceStackView.frame
+//
+//            let newYOrigin = self.view.frame.height - navBar.frame.size.height
+//
+//            tempNavBarRect.origin.y = newYOrigin
+            
+            
+            
+            
 
+            //let serviceStackViewRect: CGRect = serviceStackView.frame
+
+          //  let newYOrigin = self.view.frame.size.height - serviceStackViewRect.frame.size.height + 8 //to add spaced from the bottom
+
+           // tempNavBarRect.origin.y = newYOrigin
+
+            //serviceStackView.frame    = tempNavBarRect
