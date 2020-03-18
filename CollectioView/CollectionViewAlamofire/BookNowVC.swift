@@ -15,13 +15,19 @@ import UIKit
 
 class BookNowVC: UIViewController {
     
-    var categoryTitle: String!
-    var serviceTitle: String!
+//    var categoryTitle: String!
+//    var serviceTitle: String!
+    
+    let iPhone8PlusHeight: CGFloat = 736.0
+    
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
       // setUpStackViews()
+        postionBarButton()
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Back", style: .plain, target: self, action: #selector(backButtonAction))
         
@@ -81,7 +87,29 @@ class BookNowVC: UIViewController {
     
     
     
-    
+    func postionBarButton() {
+
+        var tempNavBarRect: CGRect = navBar.frame
+
+        if self.view.frame.size.height <= iPhone8PlusHeight {
+            tempNavBarRect.origin.y = 20
+
+            navBar.frame = tempNavBarRect
+
+            let tabServiceButtonRect: CGRect = serviceMakeRequestBtnOutlet.frame
+
+            let newYOrigin = self.view.frame.size.height - tabServiceButtonRect.size.height
+
+            tempNavBarRect.origin.y = newYOrigin
+
+            serviceMakeRequestBtnOutlet.frame    = tempNavBarRect
+
+
+        }
+
+
+
+    }
     
 
     
