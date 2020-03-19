@@ -7,50 +7,34 @@
 //https://stackoverflow.com/questions/29734954/how-do-you-share-data-between-view-controllers-and-other-objects-in-swift
 //https://learnappmaking.com/pass-data-between-view-controllers-swift-how-to/
 
+
+
+
+
 import UIKit
 
-//enum SizeType: CGFloat {
-////    case iPhone4 = 960.0
-////    case iPhone5 = 1136.0
-////    case iPhone6 = 1334.0
-////    case iPhone6Plus = 1920.0
-//
-//
-//    case iphoneX = 821.0
-//    case iphone11 = 896.0
-//    case iphone8  = 736.0
-//}
-
-
-//enum iPhoneDevice: CGFloat {
-//    
-//    case iPhone8          =  667.0
-//    case iPhone8Plus     = 736.0
-//    case iPhone11         = 896.0
-//    case iPhone11ProMax   = 896.0
-//    
-//}
-
-
-
-class BookNowVC: UIViewController {
+class BookNowVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
     
-//    var categoryTitle: String!
-//    var serviceTitle: String!
+    let datePicker: UIDatePicker = UIDatePicker()
     
-    //let iPhone8PlusHeight: CGFloat = 736.0
+    let paymentMethodPicker: UIPickerView = UIPickerView()
+    
+    let paymentMethodArray: Array<String> = ["select payment method","cash payment"]
+    
+    
     
     let iphone8Height: CGFloat = 667.0
     
+    @IBOutlet weak var subView: UIView!   //  My contribution
     
-    @IBOutlet weak var serviceStackView: UIStackView!
     
-
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
-      // setUpStackViews()
         postionBarButton()
+        createDatePickerView()
+        paymentMethod()
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Back", style: .plain, target: self, action: #selector(backButtonAction))
         
@@ -60,40 +44,45 @@ class BookNowVC: UIViewController {
         
         navBar.tintColor = UIColor.white
         
+        subView.center = self.view.center //  My contribution
         
-
+        subView.backgroundColor = .clear
+        
+        
+        //delegates
+        paymentMethodPicker.dataSource = self
+        paymentMethodPicker.delegate = self
         
         
         
         
     }
     
-
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        
+        return 1
+        
+    }
     
-//    func setUpStackViews() {
-//
-//        //w: 326 H: 579 read from storyboard
-//
-//        //enable auto layout for the stack view
-//      serviceStackView.translatesAutoresizingMaskIntoConstraints = false
-//
-//        serviceStackView.axis = .vertical
-//        serviceStackView.spacing = 10
-//
-//        serviceStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true //centers the stackview horizontally
-//
-//        serviceStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true //centers vertically
-//
-//        serviceStackView.widthAnchor.constraint(equalToConstant:  326).isActive = true
-//        serviceStackView.heightAnchor.constraint(equalToConstant: 579).isActive = true
-//
-//    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
+        return  paymentMethodArray.count
+        
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return paymentMethodArray[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        servicePaymentPickerTextField.text = paymentMethodArray[row]
+        
+    }
     
     
     
     @IBOutlet weak var navBar: UINavigationBar!
-    
-    
     @IBOutlet weak var categoryTextField: UITextField!
     @IBOutlet weak var serviceTextField: UITextField!
     @IBOutlet weak var serviceDatePickerTextField: UITextField!
@@ -110,45 +99,149 @@ class BookNowVC: UIViewController {
     
     
     
+    
+    func paymentMethod() {
+        
+        servicePaymentPickerTextField.inputView = paymentMethodPicker
+        servicePaymentPickerTextField.textColor = .black
+        servicePaymentPickerTextField.textAlignment = .center
+        
+        let toolBar = UIToolbar()
+        
+        //customize the toolbar
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
+        toolBar.sizeToFit()
+        
+        
+        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(donePressed))
+        toolBar.setItems([doneBtn], animated: true)
+        
+        
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(donePicker))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.plain, target: self, action: #selector(donePicker))
+        
+        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        servicePaymentPickerTextField.inputAccessoryView = toolBar
+        
+        
+        
+        
+    }
+    
+    
+    
+    
+    func createDatePickerView() {
+    
+        serviceDatePickerTextField.textColor = .black
+        serviceDatePickerTextField.textAlignment = .center
+        
+        //=====creating tool bar
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        
+        //customize the toolbar
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
+        toolBar.sizeToFit()
+        
+        
+        
+        
+        //=======creating done button ===
+        
+        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(donePressed))
+        toolBar.setItems([doneBtn], animated: true)
+        
+        
+        //======space between done and cancel buttons
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+        //===cancel button ==
+        let cancelBtn = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(canclePressed))
+        
+        
+        toolBar.setItems([cancelBtn, flexSpace, doneBtn], animated: true)
+        
+        //assign toolbar to the keyboard
+        
+        serviceDatePickerTextField.inputAccessoryView = toolBar
+        
+        //asign datepicker to the text field
+        serviceDatePickerTextField.inputView = datePicker
+        
+        //date picker mode
+        datePicker.datePickerMode = .date
+        
+        
+        
+    }
+    
+    
+    @objc func canclePressed() {
+        serviceDatePickerTextField.resignFirstResponder()
+        
+    }
+    
+    
+    @objc func donePressed() {
+        
+        //format the text when done is pressed
+        
+        let formatter = DateFormatter()
+        formatter.dateStyle = .full
+        formatter.timeStyle = .none  //includes the time when selected hence none removes it
+        formatter.calendar = .current
+        
+        //2 things to be done: we assign the value to textfield and close the view
+        //serviceDatePickerTextField.text = "\(datePicker.date)"
+        
+        serviceDatePickerTextField.text = formatter.string(from: datePicker.date)
+        self.view.endEditing(true)
+        
+        
+    }
+    
+    
+    @objc func donePicker() {
+        servicePaymentPickerTextField.resignFirstResponder()
+    }
+    
+    
+    
     func postionBarButton() {
-
+        
         var tempNavBarRect: CGRect = navBar.frame
-
+        
         if self.view.frame.size.height <= iphone8Height {
             tempNavBarRect.origin.y = 20
-
+            
             navBar.frame = tempNavBarRect
             
             
+            
+            var tabBarRect: CGRect = subView.frame
+            
+            let newYOrigin = self.view.frame.size.height - tempNavBarRect.size.height + 20
+            
+            // let newYOrigin = self.navBar.frame.size.height + 20 + self.subView.frame.origin.y
+            
+            tabBarRect.origin.y = newYOrigin
+            subView.frame    = tabBarRect
+            
         
-            var serviceStackviewRect: CGRect = serviceStackView.frame
             
-            let newYOrigin = self.view.frame.height - serviceStackviewRect.size.height
-            
-            //let newYOrigin = self.navBar.frame.origin.y + self.navBar.frame.size.height + 20
-            
-                serviceStackviewRect.origin.y = newYOrigin
-            
-              // serviceStackView.frame =  serviceStackviewRect
-            
-           //enables auto layout for the servicestack view  serviceStackView.translatesAutoresizingMaskIntoConstraints = false
-            serviceStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive  = true //centers verticall
-            serviceStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive  = true //centers horizontally
-            
-            serviceStackView.widthAnchor.constraint(equalToConstant: 343).isActive  = true
-            serviceStackView.heightAnchor.constraint(equalToConstant: 589).isActive  = true
-            
-            
-            
-            
-
         }
-
-
-
+        
     }
     
-
+    
     
     
     //MARK:- SERVICE LOCATION ACTION
@@ -159,28 +252,4 @@ class BookNowVC: UIViewController {
     @IBAction func serviceMakeRequestAction(_ sender: UIButton) {
     }
     
-    
-    
-    
-    
-
 }
-
-
-//            let serviceStackviewRect: CGRect = serviceStackView.frame
-//
-//            let newYOrigin = self.view.frame.height - navBar.frame.size.height
-//
-//            tempNavBarRect.origin.y = newYOrigin
-            
-            
-            
-            
-
-            //let serviceStackViewRect: CGRect = serviceStackView.frame
-
-          //  let newYOrigin = self.view.frame.size.height - serviceStackViewRect.frame.size.height + 8 //to add spaced from the bottom
-
-           // tempNavBarRect.origin.y = newYOrigin
-
-            //serviceStackView.frame    = tempNavBarRect

@@ -368,7 +368,17 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func fetchSericesFromCategory(_ theURL: String ) {
         
-        Alamofire.request( theURL ).responseJSON { (response) in
+        let headers: HTTPHeaders = [
+            "Authorization": "Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==",
+            "Content-Type": "application/x-www-form-urlencoded"
+        ]
+        
+//        let headers: HTTPHeaders = ["Authorization" : "Bearer "+accessToken!+"",
+//                          "Content-Type": "application/json"]
+        
+        
+        
+        Alamofire.request( theURL, method: .get, headers: headers ).responseJSON { (response) in
             
             guard response.result.isSuccess else {
                 print("Error with response: \(String(describing: response.result.error))")
