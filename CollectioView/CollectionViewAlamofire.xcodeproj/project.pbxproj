@@ -10,6 +10,7 @@
 		4C4699CF24146413000E4DC7 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4699CE24146413000E4DC7 /* Services.swift */; };
 		4C4699D1241467D2000E4DC7 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4699D0241467D2000E4DC7 /* Categories.swift */; };
 		CBBFDCC49758B1CE7D5E5748 /* Pods_CollectionViewAlamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 239C68AC90B1CFF619386178 /* Pods_CollectionViewAlamofire.framework */; };
+		EE0691DA2428ED8600B1C0AD /* CategoryAndServiceSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0691D92428ED8600B1C0AD /* CategoryAndServiceSingleton.swift */; };
 		EE2C5C2623FBE0C800FC0782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2C5C2523FBE0C800FC0782 /* AppDelegate.swift */; };
 		EE2C5C2823FBE0C800FC0782 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2C5C2723FBE0C800FC0782 /* SceneDelegate.swift */; };
 		EE2C5C2A23FBE0C800FC0782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2C5C2923FBE0C800FC0782 /* ViewController.swift */; };
@@ -27,6 +28,7 @@
 		4C4699D0241467D2000E4DC7 /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		960C28E6154606CFD8D1AB17 /* Pods-CollectionViewAlamofire.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollectionViewAlamofire.release.xcconfig"; path = "Target Support Files/Pods-CollectionViewAlamofire/Pods-CollectionViewAlamofire.release.xcconfig"; sourceTree = "<group>"; };
 		9CB14E17AEB4E3F238C7F9A4 /* Pods-CollectionViewAlamofire.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollectionViewAlamofire.debug.xcconfig"; path = "Target Support Files/Pods-CollectionViewAlamofire/Pods-CollectionViewAlamofire.debug.xcconfig"; sourceTree = "<group>"; };
+		EE0691D92428ED8600B1C0AD /* CategoryAndServiceSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAndServiceSingleton.swift; sourceTree = "<group>"; };
 		EE2C5C2223FBE0C800FC0782 /* CollectionViewAlamofire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollectionViewAlamofire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE2C5C2523FBE0C800FC0782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE2C5C2723FBE0C800FC0782 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 		EE2C5C1923FBE0C800FC0782 = {
 			isa = PBXGroup;
 			children = (
+				EE0691D92428ED8600B1C0AD /* CategoryAndServiceSingleton.swift */,
 				EE2C5C3923FBE1B300FC0782 /* CollectionViewCell.swift */,
 				EE2C5C2423FBE0C800FC0782 /* CollectionViewAlamofire */,
 				EE2C5C2323FBE0C800FC0782 /* Products */,
@@ -228,6 +231,7 @@
 				EE2C5C2623FBE0C800FC0782 /* AppDelegate.swift in Sources */,
 				EE8BC83723FD18E00050FD64 /* horizontalCollectionViewCell.swift in Sources */,
 				EE2C5C3A23FBE1B300FC0782 /* CollectionViewCell.swift in Sources */,
+				EE0691DA2428ED8600B1C0AD /* CategoryAndServiceSingleton.swift in Sources */,
 				EE2C5C2823FBE0C800FC0782 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

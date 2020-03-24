@@ -10,14 +10,14 @@ import UIKit
 import Alamofire
 import AlamofireImage
 
-//======Protocol to send category title and service title to BookNowVC
-//protocol sendDataToDelegate {
-//    func sendDataToVC(myData: String)
-//}
 
 
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    
+    
+   
     
     enum myTabButtons: Int {
         
@@ -27,9 +27,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
     }
     
-    //MARK:- Delegate to send data
-    //======== setting Delegate variable from the protocol
-     //var delegate: sendDataToDelegate? = nil
+    
+
+    
     
     let keyForFavourites = "Favourites"
     
@@ -46,6 +46,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     @IBOutlet weak var navBarTitle: UINavigationItem!
     
+    
+    
+    var emptyStringArray : [String] = []
     //=======  ARRAYS  ===========================================================================================
     
     var categoriesArray:       [ Categories ] = []
@@ -57,9 +60,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     var showSelectedServices:  Bool          = false // No categories selected yet
     
+    
     //====================== user defaults =========
     let defaults = UserDefaults.standard
 
+    
+    
     //=========  TITLES  ========================================================================================
     let navTitle = ["All Services", "Featured Services", "Favourite Services"]
     
@@ -68,12 +74,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     //==========  API Links  =============================================================================
     
+    
+    
     let categoryLink = "https://api.ichuzz2work.com/api/services/categories"
     
     let servicesLink = "https://api.ichuzz2work.com/api/services"
     
     let featuredLink = "https://ichuzz2work.com/api/services/featured"
     
+   
     //========================================================================================================
     
     let iPhone8PlusHeight: CGFloat = 736.0
@@ -86,6 +95,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var showAllServices:   Bool    = true
     
     let docsDir: String = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+    
+    
     
     //==============  Constants for collectionView's  =====================================
     
@@ -109,14 +120,16 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        //🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷
         
-        prepUI()
+       
         
         createDir(dir: "Categories" )   // Create necessary image directories,
                                         // does nothing if they already exist
         createDir(dir: "AllServices" )
         
         //-----------------------------------------------------------------------------------------------------
+        prepUI()
         
         LoadCategories()    // Only done once
         
@@ -130,11 +143,16 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         //-----------------------------------------------------------------------------------------------------
         
+        
+        
+        
         horizontalcollectionView.delegate   = self
         horizontalcollectionView.dataSource = self
         
         collectionView.delegate             = self
         collectionView.dataSource           = self
+        
+        
         
     }
     
@@ -256,6 +274,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             
         }
         
+        
+        
         if favouritesArray.count > 1 {  // Only sort if more than one item in Favourites
             
             self.favouritesArray.sort {
@@ -266,16 +286,22 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             
         }
         
+        
+        
         enableDisableFavouritesButton()
         
         collectionView.reloadData()
         
         saveFavourites()
         
+        
+        
     }
     
     
     
+    
+   
     
     //🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷
     
@@ -343,42 +369,50 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         if categoriesArray[ indexPath.item ].categoryID == currentCategory   {
             
+              print("Category \(indexPath.item) tapped")
+            
             return
             
         }
         
+        
+        
         currentCategory = categoriesArray[ indexPath.item ].categoryID  // Translate to real Category ID
+        
+        
+        //=== SAVING VALUES TO  SINGLETON  ==
+        CategoryAndServiceSingleton.categoryServiceSharedInstance.categoryName = categoriesArray[indexPath.item].categoryTitle
+        CategoryAndServiceSingleton.categoryServiceSharedInstance.catgoryID = categoriesArray[indexPath.item].categoryID
+        
+        
+        
+        
+        
+        
+        
         
         self.navBar.topItem!.title = categoriesArray[ indexPath.item ].categoryTitle
         
-        //=========want to get category id=====
-        //
-        //  https://api.ichuzz2work.com/api/services/category
-        //  https://api.ichuzz2work.com/api/services
-        
         let servicesAtCatID = "https://api.ichuzz2work.com/api/services/category/\(String(currentCategory))"
         
-        fetchSericesFromCategory( servicesAtCatID )
+        fetchServicesFromCategory( servicesAtCatID )
         
         showSelectedServices = true // Switch to showing selected services instead of all services
         
+        
+        
+        
     }
+    
+   
+    
+    
     
     //🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷
     
-    func fetchSericesFromCategory(_ theURL: String ) {
+    func fetchServicesFromCategory(_ theURL: String ) {
         
-        let headers: HTTPHeaders = [
-            "Authorization": "Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==",
-            "Content-Type": "application/x-www-form-urlencoded"
-        ]
-        
-//        let headers: HTTPHeaders = ["Authorization" : "Bearer "+accessToken!+"",
-//                          "Content-Type": "application/json"]
-        
-        
-        
-        Alamofire.request( theURL, method: .get, headers: headers ).responseJSON { (response) in
+        Alamofire.request( theURL, method: .get ).responseJSON { (response) in
             
             guard response.result.isSuccess else {
                 print("Error with response: \(String(describing: response.result.error))")
@@ -418,6 +452,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 
             }
             
+            
+            
             self.selectedServicesArray.sort {         // Sort selectedServicesArray based on serviceTitle
                 
                 $0.title.lowercased() < $1.title.lowercased()
@@ -432,7 +468,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
     }
     
-    //🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷
+    
+    
+//🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
@@ -524,8 +562,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     
     
-    
-    //🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷
+     //🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷
     
     func getAllServicesCell ( indexPath: IndexPath ) -> CollectionViewCell {
         
@@ -617,6 +654,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         cell.shareBtn.tag     = indexPath.item
         
         let catID  = selectedServicesArray[ indexPath.item ].categoryID
+        
         let servID = selectedServicesArray[ indexPath.item ].serviceID
         
         if doesServiceImageExist(categoryID: catID, serviceID: servID) {
@@ -943,24 +981,24 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     @IBAction func bookNowTapped(_ sender: UIButton) {
         
-       // print("Book Now \(String(sender.tag)) pressed!")
+       
+            
+        //categoriesArray
+        let singletonInstance = CategoryAndServiceSingleton.categoryServiceSharedInstance
         
-//        let whichButton: Int = sender.tag
-//
-//        if self.delegate != nil && self.allServicesArray[IndexPath.init(item: whichButton, section: 0)] != nil {
-//
-//        }
-        
-        
+        //singletonInstance.categoryName = categoriesArray.
+    
+    
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-  let nextViewController = storyBoard.instantiateViewController(withIdentifier: "BooKNow") as! BookNowVC
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "BooKNow") as! BookNowVC
         nextViewController.modalPresentationStyle = .fullScreen
         self.present(nextViewController, animated:true, completion:nil)
-        //nextViewController.categoryTitle = texField
         
         
         
         
+        
+       
         
         
     }
@@ -1139,6 +1177,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         commonTabButtonCode( myTabButtons.tabAllServices.rawValue )
         
+        
+       
     }
     
     //🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷
@@ -1238,7 +1278,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     
     
-    //🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷
+//🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷
     
     func removeFavourite( theID: Services ) {
         
@@ -1247,6 +1287,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             return
             
         }
+        
+        
         
         var localIndex: Int = 0
         
@@ -1284,7 +1326,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
     }
     
-    //🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷
+    
+    
+    
+    
+    
+//🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷
     
     func enableDisableFavouritesButton() {
         
@@ -1347,6 +1394,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
         
     }
+    
     
     //----------------------------------------------------------------------------------------------------------
     
@@ -1579,6 +1627,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
     
 }
+
+
+
+
 
 
 //❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌

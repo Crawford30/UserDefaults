@@ -36,17 +36,17 @@ class BookNowVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
         createDatePickerView()
         paymentMethod()
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Back", style: .plain, target: self, action: #selector(backButtonAction))
-        
-        // Do any additional setup after loading the view.
-        
         navBar.topItem?.title = "Create service request"
         
         navBar.tintColor = UIColor.white
         
-        subView.center = self.view.center //  My contribution
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Back", style: .plain, target: self, action: #selector(backButtonAction))
         
-        subView.backgroundColor = .clear
+        // Do any additional setup after loading the view.
+        
+       
+        
+        
         
         
         //delegates
@@ -56,7 +56,11 @@ class BookNowVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
         
         
         
+        
+        
     }
+    
+    
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         
@@ -184,6 +188,7 @@ class BookNowVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
     }
     
     
+    
     @objc func canclePressed() {
         serviceDatePickerTextField.resignFirstResponder()
         
@@ -215,22 +220,37 @@ class BookNowVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     func postionBarButton() {
+        
+        subView.center = self.view.center //  My contribution
+        
+        subView.backgroundColor = .clear
+        
         
         var tempNavBarRect: CGRect = navBar.frame
         
-        if self.view.frame.size.height <= iphone8Height {
+        if self.view.frame.size.height >= iphone8Height {
             tempNavBarRect.origin.y = 20
             
             navBar.frame = tempNavBarRect
             
             
-            
+    
             var tabBarRect: CGRect = subView.frame
             
-            let newYOrigin = self.view.frame.size.height - tempNavBarRect.size.height + 20
+            //let newYOrigin = self.view.frame.size.height - tempNavBarRect.size.height + 20
             
-            // let newYOrigin = self.navBar.frame.size.height + 20 + self.subView.frame.origin.y
+             let newYOrigin = self.navBar.frame.size.height  + self.subView.frame.origin.y
             
             tabBarRect.origin.y = newYOrigin
             subView.frame    = tabBarRect
@@ -246,10 +266,14 @@ class BookNowVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
     
     //MARK:- SERVICE LOCATION ACTION
     @IBAction func serviceLocationAction(_ sender: UITextField) {
+        
+        
     }
     
     //MARK:- SERVICE MAKE REQUEST ACTION
     @IBAction func serviceMakeRequestAction(_ sender: UIButton) {
+        
+        
     }
     
 }
