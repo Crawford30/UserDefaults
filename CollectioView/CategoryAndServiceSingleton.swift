@@ -37,7 +37,7 @@ final class CategoryAndServiceSingleton: NSObject {
     
         var catgoryID: Int?
         var categoryName: String?
-        var serviceID: Int?
+        var servicesID: Int?
         var serviceName: String?
         
     

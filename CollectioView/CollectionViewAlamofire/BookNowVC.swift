@@ -44,6 +44,7 @@ class BookNowVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
         
         // Do any additional setup after loading the view.
         
+        CategoryAndServiceSingleton.categoryServiceSharedInstance.categoryName = categoryTextField.text!
        
         
         

@@ -380,10 +380,21 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         currentCategory = categoriesArray[ indexPath.item ].categoryID  // Translate to real Category ID
         
         
-        //=== SAVING VALUES TO  SINGLETON  ==
+        
+        
+        
+        
+        
+        //=============================================================
+           //=== SAVING VALUES TO  SINGLETON  ==
         CategoryAndServiceSingleton.categoryServiceSharedInstance.categoryName = categoriesArray[indexPath.item].categoryTitle
         CategoryAndServiceSingleton.categoryServiceSharedInstance.catgoryID = categoriesArray[indexPath.item].categoryID
         
+//        CategoryAndServiceSingleton.categoryServiceSharedInstance.serviceName = selectedServicesArray[indexPath.item].title
+//        CategoryAndServiceSingleton.categoryServiceSharedInstance.servicesID = selectedServicesArray[indexPath.item].serviceID
+        
+        
+        //===============================================================
         
         
         
@@ -449,6 +460,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 tempID.title      = serviceData["name"]  as! String
                 
                 self.selectedServicesArray.append( tempID )
+                
+                
                 
             }
             
@@ -656,6 +669,44 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let catID  = selectedServicesArray[ indexPath.item ].categoryID
         
         let servID = selectedServicesArray[ indexPath.item ].serviceID
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        //================= MY THINKING =================================
+        
+        //===================WANT TO SLECTED SERVICE FOR THE PARTICULAR CATEGORY=================
+        CategoryAndServiceSingleton.categoryServiceSharedInstance.serviceName = selectedServicesArray[indexPath.item].title
+        CategoryAndServiceSingleton.categoryServiceSharedInstance.servicesID = selectedServicesArray[indexPath.item].serviceID
+        
+        //===============================================================================
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         if doesServiceImageExist(categoryID: catID, serviceID: servID) {
             
@@ -980,11 +1031,28 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
    //MARK:- BOOK NOW BUTTON //🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷
     
     @IBAction func bookNowTapped(_ sender: UIButton) {
+        print(sender.tag)
         
        
             
         //categoriesArray
         let singletonInstance = CategoryAndServiceSingleton.categoryServiceSharedInstance
+        
+         let catName = singletonInstance.categoryName
+        print(catName)
+        
+     let  servName  = singletonInstance.serviceName
+        print(servName)
+        
+        let catID = singletonInstance.catgoryID
+        print(catID)
+        
+        let servID = singletonInstance.servicesID
+        print(servID)
+        
+        
+        
+        
         
         //singletonInstance.categoryName = categoriesArray.
     
