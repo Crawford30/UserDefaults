@@ -209,6 +209,8 @@ class BookNowVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
         servicePaymentPickerTextField.resignFirstResponder()
     }
     
+    
+    
     func postionBarButton() {
         
         subView.center = self.view.center //  My contribution

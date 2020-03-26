@@ -381,27 +381,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         
         
-        
-        
-        
-        
-        //=============================================================
-           //=== SAVING VALUES TO  SINGLETON  ==
-        CategoryAndServiceSingleton.categoryServiceSharedInstance.categoryName = categoriesArray[indexPath.item].categoryTitle
-        CategoryAndServiceSingleton.categoryServiceSharedInstance.catgoryID = categoriesArray[indexPath.item].categoryID
-        
-//        CategoryAndServiceSingleton.categoryServiceSharedInstance.serviceName = selectedServicesArray[indexPath.item].title
-//        CategoryAndServiceSingleton.categoryServiceSharedInstance.servicesID = selectedServicesArray[indexPath.item].serviceID
-        
-        
-        //===============================================================
-        
-        
-        
-        
-        
-        
-        
+
+
         self.navBar.topItem!.title = categoriesArray[ indexPath.item ].categoryTitle
         
         let servicesAtCatID = "https://api.ichuzz2work.com/api/services/category/\(String(currentCategory))"
@@ -683,29 +664,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         
         
-        
-        
-        //================= MY THINKING =================================
-        
-        //===================WANT TO SLECTED SERVICE FOR THE PARTICULAR CATEGORY=================
-        CategoryAndServiceSingleton.categoryServiceSharedInstance.serviceName = selectedServicesArray[indexPath.item].title
-        CategoryAndServiceSingleton.categoryServiceSharedInstance.servicesID = selectedServicesArray[indexPath.item].serviceID
-        
-        //===============================================================================
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
         
         
         if doesServiceImageExist(categoryID: catID, serviceID: servID) {
@@ -1072,6 +1031,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 
         }
         
+        
+        
+        
         print(tempService.title)
 
         let singletonInstance = CategoryAndServiceSingleton.categoryServiceSharedInstance
@@ -1091,6 +1053,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
     }
     
+    
+    
+    
+    
+    
+    
     // Function added below on 3/25/25 ‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️
     
     func getCategoryNameFromID( theID: Int ) -> String {
@@ -1108,6 +1076,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return "Unknown Category"
         
     }
+    
+    
+    
+    
+    
+    
     
 //🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷
     
