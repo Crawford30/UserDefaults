@@ -21,8 +21,6 @@ class BookNowVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
     
     let paymentMethodArray: Array<String> = ["select payment method","cash payment"]
     
-    
-    
     let iphone8Height: CGFloat = 667.0
     
     @IBOutlet weak var subView: UIView!   //  My contribution
@@ -33,31 +31,31 @@ class BookNowVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
         super.viewDidLoad()
         
         postionBarButton()
+        
         createDatePickerView()
+        
         paymentMethod()
         
         navBar.topItem?.title = "Create service request"
         
         navBar.tintColor = UIColor.white
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Back", style: .plain, target: self, action: #selector(backButtonAction))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Back", style: .plain, target: self, action: #selector(backButtonAction) )
         
-        // Do any additional setup after loading the view.
-        
-        CategoryAndServiceSingleton.categoryServiceSharedInstance.categoryName = categoryTextField.text!
-       
-        
-        
-        
+
+        // Get singleton
+        let singletonInstance = CategoryAndServiceSingleton.categoryServiceSharedInstance
+
+        categoryTextField.text = singletonInstance.categoryName
+        serviceTextField.text  = singletonInstance.serviceName
+
+        // Send thse two ID's as part of the data back to ichuzz2work
+        //  singletonInstance.catgoryID
+        //  singletonInstance.servicesID
         
         //delegates
         paymentMethodPicker.dataSource = self
-        paymentMethodPicker.delegate = self
-        
-        
-        
-        
-        
+        paymentMethodPicker.delegate   = self
         
     }
     
@@ -98,12 +96,11 @@ class BookNowVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
     
     //MARK:- BACK BUTTON ACTION
     @IBAction func backButtonAction(_ sender: UIBarButtonItem) {
+        
         //print("Back Button Clicked")
         self.dismiss(animated: true, completion: nil)
+
     }
-    
-    
-    
     
     func paymentMethod() {
         
@@ -126,15 +123,14 @@ class BookNowVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
         
         
         let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(donePicker))
+        
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+
         let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.plain, target: self, action: #selector(donePicker))
         
         toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
         toolBar.isUserInteractionEnabled = true
         servicePaymentPickerTextField.inputAccessoryView = toolBar
-        
-        
-        
         
     }
     
@@ -155,9 +151,6 @@ class BookNowVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
         toolBar.isTranslucent = true
         toolBar.tintColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
         toolBar.sizeToFit()
-        
-        
-        
         
         //=======creating done button ===
         
@@ -184,13 +177,10 @@ class BookNowVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
         //date picker mode
         datePicker.datePickerMode = .date
         
-        
-        
     }
     
-    
-    
     @objc func canclePressed() {
+        
         serviceDatePickerTextField.resignFirstResponder()
         
     }
@@ -218,18 +208,6 @@ class BookNowVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
     @objc func donePicker() {
         servicePaymentPickerTextField.resignFirstResponder()
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     func postionBarButton() {
         

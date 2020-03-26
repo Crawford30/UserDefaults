@@ -1006,9 +1006,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 tempID = Services.init(serviceID: 0, categoryID: 0, desc: "", title: "", image: "")
                 // tempID = Services.init()
                 
-                tempID.serviceID = featuredData["id"]    as! Int
-                tempID.title     = featuredData["name"]  as! String
-                tempID.image     = featuredData["image"] as! String
+                tempID.serviceID  = featuredData["id"]          as! Int
+                tempID.categoryID = featuredData["category_id"] as! Int     // The initial lack of this caused
+                                                                            // problem when tapping Book Now
+                                                                            // when Featured Services displayed
+                tempID.title      = featuredData["name"]        as! String
+                tempID.image      = featuredData["image"]       as! String
                 
                 self.featuredArray.append(tempID)
                 
@@ -1024,54 +1027,89 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
     }
     
-   
     
+//MARK:- BOOK NOW BUTTON
     
-    
-   //MARK:- BOOK NOW BUTTON //🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷
+//🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷
     
     @IBAction func bookNowTapped(_ sender: UIButton) {
-        print(sender.tag)
+    
+        var tempService: Services
         
-       
+        tempService = Services.init(serviceID: 0, categoryID: 0, desc: "", title: "", image: "")
+        
+        switch tabButtonMode {
             
-        //categoriesArray
+            case myTabButtons.tabAllServices.rawValue:
+                
+                if showSelectedServices {
+
+                    tempService = selectedServicesArray[ sender.tag ]
+
+                } else {
+
+                    tempService = allServicesArray[ sender.tag ]
+
+                }
+            
+                break
+            
+            case myTabButtons.tabFeatured.rawValue:
+                
+                tempService = featuredArray[ sender.tag ]
+            
+                break
+            
+            case myTabButtons.tabFavourites.rawValue:
+                
+                tempService = favouritesArray[ sender.tag ]
+            
+                break
+            
+            default:
+            
+                tempService.title = "Should never happen"
+                
+        }
+        
+        print(tempService.title)
+
         let singletonInstance = CategoryAndServiceSingleton.categoryServiceSharedInstance
+
+        singletonInstance.categoryName = getCategoryNameFromID( theID: tempService.categoryID )
+        singletonInstance.serviceName  = tempService.title
+        singletonInstance.catgoryID    = tempService.categoryID
+        singletonInstance.servicesID   = tempService.serviceID
         
-         let catName = singletonInstance.categoryName
-        print(catName)
-        
-     let  servName  = singletonInstance.serviceName
-        print(servName)
-        
-        let catID = singletonInstance.catgoryID
-        print(catID)
-        
-        let servID = singletonInstance.servicesID
-        print(servID)
-        
-        
-        
-        
-        
-        //singletonInstance.categoryName = categoriesArray.
-    
-    
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "BooKNow") as! BookNowVC
+
         nextViewController.modalPresentationStyle = .fullScreen
+
         self.present(nextViewController, animated:true, completion:nil)
-        
-        
-        
-        
-        
-       
-        
         
     }
     
-    //🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷
+    // Function added below on 3/25/25 ‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️
+    
+    func getCategoryNameFromID( theID: Int ) -> String {
+        
+        for EachItem in categoriesArray {
+            
+            if EachItem.categoryID == theID {
+
+                return EachItem.categoryTitle
+
+            }
+            
+        }
+        
+        return "Unknown Category"
+        
+    }
+    
+//🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷
     
     func prepUI() {
         
